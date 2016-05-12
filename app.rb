@@ -5,12 +5,18 @@ class MyApp < Sinatra::Base
 
   # Before Filter
   before do
+    session['counter'] ||= 0 # Setzt den Session-Counter auf 0, wenn er `nil` war
+    session['counter'] += 1  # Inkrementiert den Counter um 1
+   end
+
+  get '/:value' do
+    session['value'] = params['value']
   end
 
   get '/' do
-    @greeting = "Hi Frank!"
+    @greeting="FUCK OFF"
     erb :index
-  end
+end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
