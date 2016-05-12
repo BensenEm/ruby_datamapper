@@ -14,7 +14,7 @@ class MyApp < Sinatra::Base
   end
 
   get '/' do
-    @greeting="FUCK OFF"
+    @greeting="Hi. Dies ist die Sitzungsnummer: "
     erb :index
 end
 
