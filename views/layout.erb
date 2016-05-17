@@ -2,10 +2,27 @@
 <html>
   <head>
     <title>A Sample sinatra app</title>
+
+        <meta name="author" content="Benjamin Molnár">
+        <meta name="keywords" content="bazingaa">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,900,100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="benstyle.css">
   </head>
+
   <body>
-    <img src="sinatra-logo.png" alt="Logo der Sinatra Seite" />
+    <div class="logo">
+          <img src="bazinga-logo.png" alt="Bazingaa Logo" style="width:272px;height:143px;"></img>
+    </div>
+    <nav class="main">
+        <a href="/index.html"> Start</a>
+        <a href="/contact.html"> Contact </a>
+        <a href="/imprint.html"> Imprint</a>
+    </nav>
+
     <%= yield %>
-    
+    <footer>
+      <p><a href="/admin.html"> Admin</a></p>
+      <p> Current Session Number: <%=session['counter']%></p>
+    </footer>
   </body>
 </html>
