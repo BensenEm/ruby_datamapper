@@ -5,6 +5,7 @@
 
         <meta name="author" content="Benjamin Molnár">
         <meta name="keywords" content="bazingaa">
+         <meta data-app-slug='623-funky-rabbit'>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,900,100' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="benstyle.css">
   </head>
@@ -22,7 +23,7 @@
     <%= yield %>
     <footer>
       <p><a href="/admin.html"> Admin</a></p>
-      <p> Current Session Number: <%=session['counter']%></p>
+      <p> #{<%=session['counter']%>}. Seitenaufruf</p>
     </footer>
   </body>
 </html>
