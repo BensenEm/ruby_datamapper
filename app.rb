@@ -9,6 +9,7 @@ class MyApp < Sinatra::Base
   before do
     session['counter'] ||= 0 # Setzt den Session-Counter auf 0, wenn er `nil` war
     session['counter'] += 1  # Inkrementiert den Counter um 1
+    @count=session['counter']
    end
 =begin
   get '/:value' do
@@ -24,7 +25,7 @@ class MyApp < Sinatra::Base
   end
 
   get "/index.html" do
-   @greeting="...let's do it!"
+    @greeting="...let's do it!"
     erb :index
   end
 
@@ -33,9 +34,9 @@ class MyApp < Sinatra::Base
   end
 
   post "/sendto" do
-    @Name= params[:Name]
-    @Email= params[:Email]
-    @Message= params[:Message]
+    @Name= params[:name]
+    @Email= params[:email]
+    @Message= params[:message]
     erb :sendto
   end
 

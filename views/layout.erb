@@ -23,7 +23,8 @@
     <%= yield %>
     <footer>
       <p><a href="/admin.html"> Admin</a></p>
-      <p> #{<%=session['counter']%>}. Seitenaufruf</p>
+      <p> <%= session[:counter]%>. Seitenaufruf</p>
+
     </footer>
   </body>
 </html>
