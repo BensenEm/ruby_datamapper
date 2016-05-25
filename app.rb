@@ -20,7 +20,7 @@ class MyApp < Sinatra::Base
 
 
   get '/' do
-    @greeting="Welcome Guys... "
+    @greeting="Welcome Suckers... "
     erb :index
   end
 
