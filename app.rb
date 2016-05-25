@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'orm'
 
 class MyApp < Sinatra::Base
   enable :sessions
@@ -11,6 +12,19 @@ class MyApp < Sinatra::Base
     session['counter'] += 1  # Inkrementiert den Counter um 1
     @count=session['counter']
    end
+
+ helpers do
+   def protected!
+     return if authorized?
+     headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+     halt 401, "Not authorized\n"
+   end
+
+   def authorized?
+     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+     @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+   end
+
 =begin
   get '/:value' do
     session['value'] = params['value']
@@ -37,7 +51,10 @@ class MyApp < Sinatra::Base
     @Name= params[:name]
     @Email= params[:email]
     @Message= params[:message]
+    Contact.create(_name: @Name, _email: @Email, _message: @Message)
+
     erb :sendto
+
   end
 
 
@@ -45,23 +62,26 @@ class MyApp < Sinatra::Base
     erb :imprint
   end
 
-  helpers do
-    def protected!
-      return if authorized?
-      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-      halt 401, "Not authorized\n"
-    end
 
-    def authorized?
-      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
-    end
 
   end
   get "/admin.html" do
     protected!
       erb :admin
   end
+
+  get "/admin/contact-requests.html" do
+    protected!
+    @all_contacts=Contact.all
+    erb :contact_requests
+
+
+
+
+
+  end
+
 # start the server if ruby file executed directly
 run! if app_file == $0
+
 end

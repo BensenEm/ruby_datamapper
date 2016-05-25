@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Nachricht</td>
+    <td>Aktion</td>
+  </tr>
+  <% @all_contacts.each do |record| %>
+    <tr>
+      <td><%= record._id %></td>
+      <td><%= record._name %></td>
+      <td><%= record._email %></td>
+      <td><%= record._message %></td>
+      <td><button type="button" method= "get" formaction="/admin/contact-requests/<%= record.id %>.html">Anzeigen</button>
+          <button type="button" method= "post" formaction="/admin/contact-requests/<%= record.id %>/edit.html">Bearbeiten</button>
+          <button type="button" method= "delete" formaction="/admin/contact-requests/<%= record.id %>.html">Löschen</button>
+      </td>
+    </tr>
+  <% end %>
+</table>
