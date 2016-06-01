@@ -5,18 +5,18 @@ html{
 
 .main {
     display: flex;
-    font-family: 'Lato', sans-serif; 
-    font-size: 20pt; 
-    font-weight: 100; 
+    font-family: 'Lato', sans-serif;
+    font-size: 20pt;
+    font-weight: 100;
     justify-content: space-around;
     align-content: space-between;
     padding-top: 10pt;
     padding-bottom: 20pt;
-    
+
 }
 
 .logo {
-    background: url(background.png) no-repeat center fixed;
+    background: url(/background.png) no-repeat center fixed;
     background-size: cover;
     display: flex;
     width: 100%;
@@ -25,25 +25,25 @@ html{
     align-items: center;
     border-bottom-style: none;
 }
-    
-h1 { 
-    color: white ; 
-    font-family: 'Lato', sans-serif; 
-    font-size: 36pt; 
-    font-weight: 300; 
-    line-height: 58px; 
-    margin: 0 0 58px; 
-    text-align: center; 
+
+h1 {
+    color: white ;
+    font-family: 'Lato', sans-serif;
+    font-size: 36pt;
+    font-weight: 300;
+    line-height: 58px;
+    margin: 0 0 58px;
+    text-align: center;
 }
 
-a { 
-    color: #ff3366 ;        
-    text-decoration: none; 
+a {
+    color: #ff3366 ;
+    text-decoration: none;
 
-    
+
 }
 .form{
-    font-family: 'Lato', sans-serif; 
+    font-family: 'Lato', sans-serif;
     font-size: 2em;
     background: #333366;
 
@@ -60,22 +60,17 @@ a {
     font-size: 3em;
     padding: 0 0 0 0;
     border: 0 0 0 0;
-    
+
 }
-    
+
 #inp{
     width: 49%;
     height: 450px;
 
 }
 
-a:hover { 
-    color: #ffffff; 
+a:hover {
+    color: #ffffff;
 }
 
 p { color: #adb7bd; font-family: 'Lato', Arial, sans-serif; font-size: 16px; line-height: 26px; text-indent: 30px; margin: 0; }
-
-
-
-
-
