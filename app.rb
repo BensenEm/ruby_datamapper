@@ -51,8 +51,9 @@ class MyApp < Sinatra::Base
     @Name= params[:name]
     @Email= params[:email]
     @Message= params[:message]
-    ContactRequest.create(_name: @Name, _email: @Email, _message: @Message)
-
+    item=ContactRequest.create(_name: @Name, _email: @Email, _message: @Message)
+    item.save
+    item.id
     erb :sendto
 
   end
@@ -70,7 +71,7 @@ class MyApp < Sinatra::Base
       erb :admin
   end
 
-  get "/contact-requests.html" do
+  get "/admin/contact-requests.html" do
     protected!
     @all_contacts=ContactRequest.all
     erb :contact_requests
