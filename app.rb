@@ -51,7 +51,7 @@ class MyApp < Sinatra::Base
     @Name= params[:name]
     @Email= params[:email]
     @Message= params[:message]
-    Contact.create(_name: @Name, _email: @Email, _message: @Message)
+    ContactRequest.create(_name: @Name, _email: @Email, _message: @Message)
 
     erb :sendto
 
@@ -72,7 +72,7 @@ class MyApp < Sinatra::Base
 
   get "/admin/contact-requests.html" do
     protected!
-    @all_contacts=Contact.all
+    @all_contacts=ContactRequest.all
     erb :contact_requests
 
 
