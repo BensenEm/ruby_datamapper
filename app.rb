@@ -51,7 +51,7 @@ class MyApp < Sinatra::Base
     @Name= params[:name]
     @Email= params[:email]
     @Message= params[:message]
-    item=ContactRequest.create(_name: @Name, _email: @Email, _message: @Message)
+    item=ContactRequest.create(_name: params['name'], _email: params['email'], _message: params['message'])
     item.save
     item.id
     erb :sendto
