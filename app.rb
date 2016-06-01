@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'datamapper'
+require './datamapper'
 
 class MyApp < Sinatra::Base
   enable :sessions
