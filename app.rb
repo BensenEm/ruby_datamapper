@@ -70,7 +70,7 @@ class MyApp < Sinatra::Base
       erb :admin
   end
 
-  get "/admin/contact-requests.html" do
+  get "/contact-requests.html" do
     protected!
     @all_contacts=ContactRequest.all
     erb :contact_requests
