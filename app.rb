@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'orm'
+require 'orm.rb'
 
 class MyApp < Sinatra::Base
   enable :sessions
