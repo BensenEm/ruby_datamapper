@@ -75,10 +75,8 @@ class MyApp < Sinatra::Base
     erb :contact_requests
 
 get "/admin/contact-requests/id.html" do
-  
+
     erb: sendto
-
-
 
   end
 
