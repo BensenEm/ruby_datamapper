@@ -57,6 +57,7 @@ class MyApp < Sinatra::Base
   end
 
 
+
   get "/imprint.html" do
     erb :imprint
   end
@@ -73,8 +74,28 @@ class MyApp < Sinatra::Base
     protected!
     @all_contacts=ContactRequest.all
     erb :contact_requests
+  end
 
+  get "/admin/contact-requests/:id.html" do
+    thiscontact=ContactRequest.first(:id)
+    @Name=thiscontact.name
+    @Email=thiscontact.email
+    @Message=thiscontact.message
+    erb :showcontact
+  end
 
+  get "/admin/contact-requests/:id/edit.html" do
+    post=ContactRequest.first(:id)
+    @Name=post.name
+    @Email=post.email
+    @Message=post.message
+    erb :editcontact
+
+    post "/updateContact" do
+      thiscontact.update(name: params['name'], email: params['email'], message: params['message'])
+      erb :sendto
+
+    end
   end
 
 # start the server if ruby file executed directly
