@@ -1,7 +1,5 @@
 require 'sinatra/base'
 require './datamapper'
-require "better_errors"
-
 
 class MyApp < Sinatra::Base
   enable :sessions
