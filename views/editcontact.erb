@@ -1,8 +1,12 @@
 <h1>Edit Contact</h1>
-  <form class="indform" action="/updateContact" method="post" >
 
-    <input type="text" name="name" class="pure-input-1-2" size ="58" placeholder="<%= @Name %>"/>Name<br>
-    <input type="email" name="email" class="pure-input-1-2" size="58" placeholder="<%= @Email %>"/>Email<br>
-    <textarea class="pure-input-1-2" name="message" rows="5" cols ="50" placeholder="<%= @Message %>">Message</textarea>
+
+<form action="/updateContact/<%= @posst.id %>" method="post" accept-charset="utf-8">
+
+    <input type="hidden" name="_method" value="put">
+
+    <input type="text" name="name" value="<%= @posst.name%>"  class="pure-input-1-2" size ="58" placeholder="<%= @posst.name %>"/>Name<br>
+    <input type="email" name="email" value="<%= @posst.email%>" class="pure-input-1-2" size="58" placeholder="<%= @posst.email %>"/>Email<br>
+    <input class="pure-input-1-2" name="message" value="<%= @posst.message%>" rows="5" cols ="50" placeholder="<%= @posst.message %>">Message</input>
     <button type="submit" class="pure-button pure-input-1-2 pure-button-primary" value=Absenden>Send</button>
 </form>

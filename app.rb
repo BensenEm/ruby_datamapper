@@ -1,8 +1,15 @@
 require 'sinatra/base'
 require './datamapper'
+require "better_errors"
+
 
 class MyApp < Sinatra::Base
   enable :sessions
+
+  configure :development do
+  use BetterErrors::Middleware
+  BetterErrors.application_root = __dir__
+end
 
 
 
@@ -64,7 +71,7 @@ class MyApp < Sinatra::Base
 
 
 
-  end
+
   get "/admin.html" do
     protected!
       erb :admin
@@ -76,29 +83,35 @@ class MyApp < Sinatra::Base
     erb :contact_requests
   end
 
-  get "/admin/contact-requests/:id.html" do
-    thiscontact=ContactRequest.first(:id)
+  get "/admin/contact-requests/:id.html" do |id|
+    thiscontact=ContactRequest.get!(id)
     @Name=thiscontact.name
     @Email=thiscontact.email
     @Message=thiscontact.message
     erb :showcontact
   end
 
-  get "/admin/contact-requests/:id/edit.html" do
-    post=ContactRequest.first(:id)
-    @Name=post.name
-    @Email=post.email
-    @Message=post.message
+  get "/admin/contact-requests/:id/edit.html" do |id|
+    @posst=ContactRequest.get!(id)
     erb :editcontact
+  end
 
-    post "/updateContact" do
-      thiscontact.update(name: params['name'], email: params['email'], message: params['message'])
-      erb :sendto
+  post "/updateContact/:id" do |id|
+    thiscontact=ContactRequest.get!(id)
+    thiscontact.update(name: params['name'], email: params['email'], message: params['message'])
+    @Name=thiscontact.name
+    @Email=thiscontact.email
+    @Message=thiscontact.message
+    erb :showcontact
+  end
 
-    end
+  get "/admin/contact-requests/:id/delete.html" do |id|
+    thiscontact=ContactRequest.get!(id)
+    thiscontact.destroy
+    erb :admin
   end
 
 # start the server if ruby file executed directly
 run! if app_file == $0
-
+end
 end
